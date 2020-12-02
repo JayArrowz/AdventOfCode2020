@@ -4,7 +4,7 @@ namespace AdventOfCode2020
 {
     public class DayOne
     {
-        public static int GetListProduct(int[] expenses, int expectedSum)
+        public static int GetListBiProduct(int[] expenses, int expectedSum)
         {
             return expenses.Select(expense => expense * expenses.FirstOrDefault(expensesB => expensesB + expense == expectedSum))
                 .Where(expenseProduct => expenseProduct > 0)

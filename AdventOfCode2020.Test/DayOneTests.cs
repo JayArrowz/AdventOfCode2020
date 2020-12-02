@@ -14,7 +14,7 @@ namespace AdventOfCode2020.Test
         [InlineData(new int[] { 1721, 979, 366, 299, 675, 1456 }, 514579)]
         public void TestExampleOne(int[] data, int expectedProduct)
         {
-            DayOne.GetListProduct(data, 2020).Should().Be(expectedProduct);
+            DayOne.GetListBiProduct(data, 2020).Should().Be(expectedProduct);
         } 
         
         [Theory]
@@ -28,7 +28,7 @@ namespace AdventOfCode2020.Test
         public void TestPartOne()
         {
             var expenses = File.ReadAllLines(FilePath).Select(int.Parse).ToArray();
-            var product = DayOne.GetListProduct(expenses, 2020);
+            var product = DayOne.GetListBiProduct(expenses, 2020);
             Console.WriteLine(product);
         }
 
