@@ -3,11 +3,19 @@ using System;
 using System.IO;
 using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AdventOfCode2020.Test
 {
     public class DayOneTests
     {
+        private readonly ITestOutputHelper _output;
+
+        public DayOneTests(ITestOutputHelper output)
+        {
+            _output = output;
+        }
+
         private static readonly string FilePath = "./TestData/DayOne.txt";
 
         [Theory]
@@ -27,17 +35,22 @@ namespace AdventOfCode2020.Test
         [Fact]
         public void TestPartOne()
         {
-            var expenses = File.ReadAllLines(FilePath).Select(int.Parse).ToArray();
+            var expenses = GetExpensesFromFile();
             var product = DayOne.GetListBiProduct(expenses, 2020);
-            Console.WriteLine(product);
+            _output.WriteLine("Part One Answer: {0}", product);
         }
 
         [Fact]
         public void TestPartTwo()
         {
-            var expenses = File.ReadAllLines(FilePath).Select(int.Parse).ToArray();
+            var expenses = GetExpensesFromFile();
             var product = DayOne.GetListTriProduct(expenses, 2020);
-            Console.WriteLine(product);
+            _output.WriteLine("Part Two Answer: {0}", product);
+        }
+
+        private int[] GetExpensesFromFile()
+        {
+            return File.ReadAllLines(FilePath).Select(int.Parse).ToArray();
         }
     }
 }
